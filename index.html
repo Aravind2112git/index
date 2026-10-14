@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Aravind V, Java and full-stack developer in Chennai. Projects: e-commerce catalog and fitness microservices.">
+<style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Aravind V Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single column "spec sheet". Wide hero name, then project sheets with a service map, a skills table, contact. */
+:root {
+  --bg: #eef1f5;
+  --surface: #f9fafc;
+  --fg: #111a2b;
+  --muted: #55627a;
+  --line: #cdd5e1;
+  --accent: #2f46e0;
+  --accent-fg: #ffffff;
+  --signal: #b45f06;
+  --font-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1522; --surface: #151e2f; --fg: #e6ebf5; --muted: #9aa7bf;
+    --line: #28344b; --accent: #8fa2ff; --accent-fg: #0e1522; --signal: #f0b35c;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1522; --surface: #151e2f; --fg: #e6ebf5; --muted: #9aa7bf;
+  --line: #28344b; --accent: #8fa2ff; --accent-fg: #0e1522; --signal: #f0b35c;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+.wrap { max-width: 960px; margin: 0 auto; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.mono { font-family: var(--font-mono); }
+.label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+nav { display: flex; gap: 20px; flex-wrap: wrap; padding-block: 20px; border-bottom: 1px solid var(--line); font-family: var(--font-mono); font-size: 13px; align-items: center; }
+nav .brand { margin-right: auto; color: var(--fg); font-weight: 500; }
+nav a { color: var(--muted); text-decoration: none; }
+nav a:hover { color: var(--accent); }
+
+.hero { padding-block: 56px 48px; border-bottom: 1px solid var(--line); }
+.hero h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(48px, 11vw, 112px); line-height: 0.95; letter-spacing: -0.03em; margin: 12px 0 24px; text-wrap: balance; }
+.hero h1 span { color: var(--accent); }
+.hero p.lead { font-size: clamp(18px, 2.4vw, 22px); max-width: 38em; margin: 0 0 28px; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; }
+.facts span { font-family: var(--font-mono); font-size: 13px; border: 1px solid var(--line); background: var(--surface); padding: 5px 12px; border-radius: 4px; }
+
+section { padding-block: 56px; border-bottom: 1px solid var(--line); }
+section h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 4.5vw, 40px); letter-spacing: -0.02em; line-height: 1.1; margin: 8px 0 28px; text-wrap: balance; }
+
+.project { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: clamp(20px, 4vw, 36px); display: grid; gap: 24px; min-width: 0; }
+.project + .project { margin-top: 24px; }
+.project h3 { font-family: var(--font-display); font-size: clamp(24px, 3.4vw, 32px); letter-spacing: -0.02em; line-height: 1.15; margin: 0; }
+.project p { margin: 0; max-width: 62ch; }
+.p-head { display: flex; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; align-items: baseline; }
+.stack { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
+.stack li { font-family: var(--font-mono); font-size: 12.5px; padding: 3px 10px; border-radius: 3px; background: var(--bg); border: 1px solid var(--line); }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+.two > div { min-width: 0; }
+.two ul { margin: 8px 0 0; padding-left: 18px; }
+.two li { margin-bottom: 4px; }
+.repo { font-family: var(--font-mono); font-size: 13px; }
+
+/* service map for the microservices project */
+.map { overflow-x: auto; border-top: 1px dashed var(--line); padding-top: 20px; }
+.map-grid { display: grid; grid-template-columns: repeat(4, minmax(130px, 1fr)); gap: 10px; min-width: 620px; align-items: stretch; }
+.node { border: 1px solid var(--line); background: var(--bg); border-radius: 4px; padding: 10px 12px; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.4; }
+.node b { display: block; font-size: 13px; color: var(--fg); }
+.node small { color: var(--muted); font-size: 12px; }
+.node.edge { border-color: var(--accent); }
+.node.ai { border-color: var(--signal); }
+.col { display: grid; gap: 10px; }
+.col .arrow { font-family: var(--font-mono); color: var(--muted); font-size: 12px; text-align: center; }
+
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th, td { text-align: left; padding: 14px 12px 14px 0; border-top: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--font-mono); font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); width: 28%; }
+.tbl { overflow-x: auto; }
+
+.about { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
+.about p { margin: 0 0 14px; max-width: 60ch; }
+.about > div { min-width: 0; }
+dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 20px; font-size: 15px; }
+dt { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); padding-top: 3px; }
+dd { margin: 0; }
+
+.contact-list { display: grid; gap: 0; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+.row { display: grid; grid-template-columns: 110px 1fr auto; gap: 8px 16px; align-items: center; padding: 16px 20px; border-top: 1px solid var(--line); }
+.row:first-child { border-top: 0; }
+.row .v { font-family: var(--font-mono); font-size: 14px; overflow-wrap: anywhere; min-width: 0; }
+.row .v a { color: var(--fg); }
+button.copy, a.go { font-family: var(--font-mono); font-size: 12.5px; background: var(--accent); color: var(--accent-fg); border: 0; border-radius: 4px; padding: 7px 14px; cursor: pointer; text-decoration: none; display: inline-block; }
+button.copy:hover, a.go:hover { opacity: 0.88; }
+@media (max-width: 560px) {
+  .row { grid-template-columns: 1fr; }
+  .row .act { justify-self: start; }
+}
+footer { padding-block: 28px max(28px, env(safe-area-inset-bottom, 0px)); font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+@media (prefers-reduced-motion: no-preference) { a, button { transition: opacity .15s, color .15s; } }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <span class="brand">aravind.v</span>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header class="hero">
+    <div class="label">Java &amp; full-stack developer · Chennai</div>
+    <h1>Aravind <span>V</span></h1>
+    <p class="lead">I build Spring Boot backends and React frontends. My two projects cover a REST catalog on MySQL and a microservices fitness app with OAuth2 login and an AI recommendation service.</p>
+    <div class="facts">
+      <span>B.Tech AI &amp; Data Science</span>
+      <span>Class of 2026</span>
+      <span>Open to fresher roles</span>
+    </div>
+  </header>
+
+  <section id="projects">
+    <div class="label">Projects</div>
+    <h2>Two projects, one monolith and one microservices system</h2>
+
+    <article class="project">
+      <div class="p-head">
+        <h3>E-Commerce Product Catalog</h3>
+        <span class="label">Spring Boot · React · MySQL</span>
+      </div>
+      <p>A full-stack store front where shoppers browse products, filter by category and search as they type. The backend exposes REST endpoints for products and categories, linked through bidirectional JPA relationships.</p>
+      <ul class="stack">
+        <li>Java</li><li>Spring Boot</li><li>Spring Data JPA</li><li>Hibernate</li><li>MySQL 8</li><li>Lombok</li><li>React (Vite)</li><li>Bootstrap 5</li>
+      </ul>
+      <div class="two">
+        <div>
+          <div class="label">What it does</div>
+          <ul>
+            <li>Product listing with category filter</li>
+            <li>Real-time search</li>
+            <li>REST APIs for products and categories</li>
+          </ul>
+        </div>
+        <div>
+          <div class="label">Backend design</div>
+          <ul>
+            <li>Product and Category entities with a bidirectional JPA mapping</li>
+            <li>Vite dev proxy to the Spring Boot API, with CORS configured</li>
+          </ul>
+        </div>
+      </div>
+      <div class="repo">Code: <a href="https://github.com/Aravind2112git" target="_blank" rel="noopener">github.com/Aravind2112git</a></div>
+    </article>
+
+    <article class="project">
+      <div class="p-head">
+        <h3>Fitness Tracking Microservices</h3>
+        <span class="label">Spring Cloud · Keycloak · Gemini</span>
+      </div>
+      <p>A fitness app split into independent services. Users log in through Keycloak, record activities, and receive personalized workout recommendations generated by the Google Gemini API.</p>
+      <ul class="stack">
+        <li>Spring Boot</li><li>Eureka</li><li>Config Server</li><li>API Gateway</li><li>Keycloak OAuth2 + PKCE</li><li>RabbitMQ</li><li>PostgreSQL</li><li>MongoDB</li><li>Gemini API</li><li>React 19</li><li>Redux Toolkit</li><li>MUI</li>
+      </ul>
+      <div class="map" role="group" aria-label="Service architecture">
+        <div class="label" style="margin-bottom:12px">Service map</div>
+        <div class="map-grid">
+          <div class="col">
+            <div class="node"><b>React client</b><small>Vite, Redux Toolkit, MUI</small></div>
+            <div class="node edge"><b>Keycloak</b><small>OAuth2 with PKCE</small></div>
+          </div>
+          <div class="col">
+            <div class="node edge"><b>API Gateway</b><small>single entry point</small></div>
+            <div class="node"><b>Eureka + Config Server</b><small>discovery and shared config</small></div>
+          </div>
+          <div class="col">
+            <div class="node"><b>userservice</b><small>PostgreSQL via JPA</small></div>
+            <div class="node"><b>activityservice</b><small>MongoDB, publishes to RabbitMQ</small></div>
+          </div>
+          <div class="col">
+            <div class="node"><b>RabbitMQ</b><small>activity events</small></div>
+            <div class="node ai"><b>aiservice</b><small>MongoDB, calls Gemini API</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="two">
+        <div>
+          <div class="label">What it does</div>
+          <ul>
+            <li>Secure login with the OAuth2 PKCE flow</li>
+            <li>Activity logging per user</li>
+            <li>AI workout recommendations on each logged activity</li>
+          </ul>
+        </div>
+        <div>
+          <div class="label">How the AI path works</div>
+          <ul>
+            <li>A logged activity is published to RabbitMQ</li>
+            <li>aiservice consumes it, asks Gemini for advice and stores the result in MongoDB</li>
+          </ul>
+        </div>
+      </div>
+      <div class="repo">Code: <a href="https://github.com/Aravind2112git" target="_blank" rel="noopener">github.com/Aravind2112git</a></div>
+    </article>
+  </section>
+
+  <section id="skills">
+    <div class="label">Skills</div>
+    <h2>What I work with</h2>
+    <div class="tbl">
+      <table>
+        <tr><th>Backend</th><td>Java, Spring Boot, Spring Data JPA, Hibernate, Lombok, REST APIs</td></tr>
+        <tr><th>Microservices</th><td>Eureka, Spring Cloud Config Server, API Gateway, RabbitMQ, Keycloak (OAuth2, PKCE)</td></tr>
+        <tr><th>Frontend</th><td>React, Vite, Redux Toolkit, MUI, Bootstrap, React Router, Axios</td></tr>
+        <tr><th>Databases</th><td>MySQL, PostgreSQL, MongoDB</td></tr>
+        <tr><th>AI integration</th><td>Google Gemini API from a Spring Boot service</td></tr>
+        <tr><th>Tools</th><td>IntelliJ IDEA, VS Code, Git, GitHub</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="label">About</div>
+    <h2>A recent graduate who likes working across the stack</h2>
+    <div class="about">
+      <div>
+        <p>I finished my B.Tech in AI and Data Science in 2026 and completed a full-stack Java development program. I enjoy the backend most: designing entities, wiring services together and tracing a bug to its root cause.</p>
+        <p>I am looking for an entry-level Java or full-stack role where I can keep building and learn from a team.</p>
+      </div>
+      <div>
+        <dl>
+          <dt>Based in</dt><dd>Chennai, India</dd>
+          <dt>Degree</dt><dd>B.Tech, AI &amp; Data Science</dd>
+          <dt>Focus</dt><dd>Java, Spring Boot, React</dd>
+          <dt>Looking for</dt><dd>Entry-level software roles</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="border-bottom:0">
+    <div class="label">Contact</div>
+    <h2>Get in touch</h2>
+    <div class="contact-list">
+      <div class="row">
+        <span class="label">Email</span>
+        <span class="v" id="email">v.aravind2112@gmail.com</span>
+        <span class="act"><button class="copy" id="copyBtn" type="button">Copy</button></span>
+      </div>
+      <div class="row">
+        <span class="label">LinkedIn</span>
+        <span class="v">linkedin.com/in/aravind-v-854188249</span>
+        <span class="act"><a class="go" href="https://www.linkedin.com/in/aravind-v-854188249" target="_blank" rel="noopener">Open</a></span>
+      </div>
+      <div class="row">
+        <span class="label">GitHub</span>
+        <span class="v">github.com/Aravind2112git</span>
+        <span class="act"><a class="go" href="https://github.com/Aravind2112git" target="_blank" rel="noopener">Open</a></span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Aravind V · Chennai</span>
+    <span>Java · Spring Boot · React</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('copyBtn');
+  var el = document.getElementById('email');
+  btn.addEventListener('click', function () {
+    var text = el.textContent.trim();
+    function done() { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1500); }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Selected';
+      setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
+    }
+    try {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>
